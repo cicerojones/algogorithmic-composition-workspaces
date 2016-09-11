@@ -7,3 +7,4 @@
 *.png
 *.wav
 *.xml
+/pwgl-files/.DS_Store
