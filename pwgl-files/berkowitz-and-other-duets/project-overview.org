@@ -1,0 +1,115 @@
+* 
+** directory files
+- berkowitz-duets-1.pwgl
+- mozart-duet-rhythms.pwgl
+- plist-db1.pwgl
+- project-overview.org
+- recompose-simple-scripted-pitches.pwgl
+- rtm-database.lisp
+- rtm-reference.org
+- 
+** documenting directory files
+*** recompose-simple-scripted-pitches.pwgl
+lost code for generating pitches???
+**** use of enp-script box to re-write pitches
+
+#+BEGIN_SRC lisp
+(* ?1 
+   (?if (let ((midi (nth (1- (notenum ?1)) (pwgl-value :pitches))))
+          (when midi (setf (midi ?1) midi))))
+   "set midis")
+
+
+#+END_SRC
+
+**** the rhythms for a piece
+#+BEGIN_SRC lisp
+(
+:r111 ;; three quarters
+:r15555 ;; one quarter four eighths
+:r1111 ;; four quarters
+:r21 ;; half note, quarter
+:r555555 ;; six eighths
+:r1-1-6666 ;; quarter, quarter rest, four sixteenths
+:r1111
+)
+#+END_SRC
+
+**** my library function
+
+ENP-VOICE-RTM library
+convert-measures
+
+#+BEGIN_SRC lisp
+(in-package :ENP-VOICE-RTM)
+
+(defun sub-beat-converter (sub)
+  (let ((measure-sub sub))
+    (cons (car measure-sub)
+	  (let ((b (cadr measure-sub)))
+	    (list (loop for n in b collect `(,n :notes (60))))))))
+
+(defun convert-beats (measure) (mapcar #'sub-beat-converter measure))
+
+(defun convert-measures (measures) (mapcar #'convert-beats measures))
+
+#+END_SRC
+#+BEGIN_SRC lisp
+(loop for tag in score-ref collect (getf cl-user::*rtm-db1* tag))
+#+END_SRC
+**** available rtms in this file
+
+#+BEGIN_SRC lisp
+(defparameter *rtm-db1* 
+  '(
+    ;;; 4/4 rtms
+    :r4 ((4 (1)))
+
+    :r22 ((2 (1)) (2 (1)))
+
+    :r31 ((3 (1)) (1 (1)))
+
+    :r13 ((1 (1)) (3 (1)))
+
+    :r211 ((2 (1)) (1 (1)) (1 (1)))
+
+    :r121 ((1 (1)) (2 (1)) (1 (1)))
+
+    :r112 ((1 (1)) (1 (1)) (2 (1)))
+
+    :r22 ((2 (1)) (2 (1)))
+
+    :r55552 ((2 (1 1 1 1)) (2 (1)))
+
+    :r25555 ((2 (1)) (2 (1 1 1 1)))
+
+    :r55255 ((1 (1 1)) (2 (1)) (1 (1 1)))
+
+    :r555511 ((2 (1 1 1 1)) (2 (1 1)))
+
+    :r115555 ((2 (1 1)) (2 (1 1 1 1)))
+
+    :r1111 ((1 (1)) (1 (1)) (1 (1)) (1 (1)))
+
+    ;;; 3/4 rtms
+    :R1-1-6666 ((1 (1)) (1 (-1)) (1 (1 1 1 1)))
+    
+    :R555555 ((1 (1 1)) (1 (1 1)) (1 (1 1)))
+
+    :r12 ((1 (1)) (2 (1)))
+    
+    :R21 ((2 (1)) (1 (1)))
+
+    :R1111 ((1 (1)) (1 (1)) (1 (1)) (1 (1)))
+
+    :R15555 ((1 (1)) (1 (1 1)) (1 (1 1)))
+
+    :R111 ((1 (1)) (1 (1)) (1 (1)))))
+#+END_SRC
+*** plist-db1.pwgl
+first use of library function--no pitch information
+*** mozart-duet-rhythms.pwgl
+*** rtm-database.lisp
+*** project-overview.org
+*** rtm-reference.org
+*** berkowitz-duets-1.pwgl
