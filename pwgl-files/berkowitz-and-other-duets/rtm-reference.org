@@ -1,3 +1,7 @@
+* adding lisp code for editing pwgl rhythms
+  :PROPERTIES:
+  :ID:       C0FF2111-0CFE-450F-90D1-430A13B5B203
+  :END:
 * basic 4/4 rhythms
 ** ;; whole-note in 4/4
 *** 4

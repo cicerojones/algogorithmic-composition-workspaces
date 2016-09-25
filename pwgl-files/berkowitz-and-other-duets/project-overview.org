@@ -113,3 +113,33 @@ first use of library function--no pitch information
 *** project-overview.org
 *** rtm-reference.org
 *** berkowitz-duets-1.pwgl
+* basic collection of PMC rules
+#+BEGIN_SRC lisp
+(* ?1 ?2                     ;;PM-part
+  (?if (/= ?1 ?2))         ;;Lisp-code part
+  "No equal adjacent values")
+
+(* ?1 ?2 
+   (?if (member (mod12 (- ?2 ?1)) '(5 6)))
+   "mod12 Interval rule")
+
+(* ?1 
+  (?if (not (member ?1 (rest rl)))) 
+  "No duplicates")
+
+(* ?1 
+   (?if (not (member (mod ?1 12) (rest rl) :key #'mod12)))
+   "No pitch class duplicates")
+
+(* 
+   (?if (apply #'< l)) 
+  "Result in ascending order")
+
+(i1 i2 i4 i6 
+  (?if (eq-SC? '(4-1) i1 i2 i4 i6)) 
+  "index rule")
+
+
+
+
+#+END_SRC
