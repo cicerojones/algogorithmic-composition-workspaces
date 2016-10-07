@@ -1,4 +1,4 @@
-* 
+* algogorithmic composition repository
 ** directory files
 - berkowitz-duets-1.pwgl
 - mozart-duet-rhythms.pwgl
@@ -10,6 +10,9 @@
 - 
 ** documenting directory files
 *** recompose-simple-scripted-pitches.pwgl
+    :PROPERTIES:
+    :ID:       F8956FC2-0518-44EB-8F99-7CC95D8551DA
+    :END:
 lost code for generating pitches???
 **** use of enp-script box to re-write pitches
 
@@ -35,7 +38,7 @@ lost code for generating pitches???
 )
 #+END_SRC
 
-**** my library function
+**** my ENP-VOICE-RTM library functions (imported as PWGL library)
 
 ENP-VOICE-RTM library
 convert-measures
@@ -114,6 +117,7 @@ first use of library function--no pitch information
 *** rtm-reference.org
 *** berkowitz-duets-1.pwgl
 * basic collection of PMC rules
+** copied straight from PWGL tutorial
 #+BEGIN_SRC lisp
 (* ?1 ?2                     ;;PM-part
   (?if (/= ?1 ?2))         ;;Lisp-code part

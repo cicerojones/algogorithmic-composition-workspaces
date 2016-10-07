@@ -1,8 +1,8 @@
-* adding lisp code for editing pwgl rhythms
+* Purpose: creating lisp code for editing pwgl rhythms
   :PROPERTIES:
   :ID:       C0FF2111-0CFE-450F-90D1-430A13B5B203
   :END:
-* basic 4/4 rhythms
+* canon of basic 4/4 rhythms (whole, half, dotted-half, quarters, eighths)
 ** ;; whole-note in 4/4
 *** 4
 #+BEGIN_SRC lisp
@@ -94,15 +94,15 @@
 111
 111
 1111
-** lisp development
-*** defparameter db to nil
+* lisp development
+** defparameter db to nil
 #+BEGIN_SRC lisp
 (defparameter *db* ())
 #+END_SRC
 
 #+RESULTS:
 : *DB*
-*** practice-score 
+** practice-score 
 #+BEGIN_SRC lisp
 
 (setq practice-score '(
@@ -124,7 +124,7 @@
 
 #+RESULTS:
 | :R111 | :R15555 | :R1111 | :R21 | :R111 | :R111 | :R555555 | :R1-1-6666 | :R111 | :R15555 | :R111 | :R21 | :R111 | :R111 | :R1111 |
-*** macro for inserting
+** macro for inserting
 #+BEGIN_SRC lisp
 (defmacro insert-tag (tag) `(setf (getf *db* ,tag) ()))
 #+END_SRC
@@ -132,7 +132,7 @@
 #+RESULTS:
 : INSERT-TAG
 
-*** inserting
+** inserting
 #+BEGIN_SRC lisp
 ;(insert-tag :r111)
 (insert-tag :r15555)
@@ -141,14 +141,14 @@
 #+RESULTS:
 : NIL
 
-*** remove key-value pairs from 
+** remove key-value pairs from 
 #+BEGIN_SRC lisp
 (remf *db* :15555)
 #+END_SRC
 
 #+RESULTS:
 : NIL
-*** looping over practice-score
+** looping over practice-score
 #+BEGIN_SRC lisp
 ;; (loop for tag in practice-score collect tag)
 (loop for tag in practice-score do (insert-tag tag))
@@ -156,7 +156,7 @@
 
 #+RESULTS:
 : NIL
-*** see *db* contents
+** see *db* contents
 #+BEGIN_SRC lisp
 *db*
 #+END_SRC
@@ -194,7 +194,6 @@
 | 1 | (1) |
 
 * rtm databases
-
 ** small and simple rtm databases
 #+BEGIN_SRC lisp
 (defparameter *small-rtmdb* '(:R1-1-6666 ((1 (1)) (1 (-1)) (1 (1 1 1 1))) :R555555 ((1 (1 1)) (1 (1 1)) (1 (1 1))) :R21 ((2 (1)) (1 (1))) :R1111 ((1 (1)) (1 (1)) (1 (1)) (1 (1))) :R15555 ((1 (1)) (1 (1 1)) (1 (1 1))) :R111 ((1 (1)) (1 (1)) (1 (1)))))

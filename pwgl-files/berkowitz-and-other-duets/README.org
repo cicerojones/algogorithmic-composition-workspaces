@@ -1,12 +1,32 @@
-* This is where it's at
+* Organizing work in Common Lisp and PWGL for composition
+  :PROPERTIES:
+  :ID:       EE7143F7-E35C-4141-921B-4E271CC8A7E3
+  :END:
 WRT to major (incremental) development
-** File
-README.org
+** Files (see project-overview.org as well)
+/Users/b/Github-repos/algogorithmic-composition-workspaces/pwgl-files/berkowitz-and-other-duets/
+
+- README.org
+  - this file
+- project-overview.org
+
+- rtm-reference.org
+
+- recompose-simple-scripted-pitches.pwgl
+  - see project-overview.org: [[id:F8956FC2-0518-44EB-8F99-7CC95D8551DA][recompose-simple-scripted-pitches.pwgl]]
+  - uses a handful of rtms and an abstraction for voicing pitch-class
+    sets
+  - realizes pitches in a score-editor with an enp-script box
+
 berkowitz-duets-1.pwgl
 mozart-duet-rhythms.pwgl
 plist-db1.pwgl
-project-overview.org
-recompose-simple-scripted-pitches.pwgl
-rtm-database.lisp
-rtm-reference.org
 
+- rtm-database.lisp
+  - not needed by particular patch, but holds formatted past work that
+    can be copied?
+
+** start fluidsynth before PWGL
+call from command line with soundfont argument such as
+
+~/Library/Audio/Sounds/Banks/GeneralUser\ GS\ MuseScore\ v1.442.sf2
