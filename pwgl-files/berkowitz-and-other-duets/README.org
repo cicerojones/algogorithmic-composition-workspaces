@@ -1,4 +1,4 @@
-* Organizing work in Common Lisp and PWGL for composition
+* Common Lisp and PWGL work toward algorithmic composition
   :PROPERTIES:
   :ID:       EE7143F7-E35C-4141-921B-4E271CC8A7E3
   :END:
@@ -30,3 +30,15 @@ plist-db1.pwgl
 call from command line with soundfont argument such as
 
 ~/Library/Audio/Sounds/Banks/GeneralUser\ GS\ MuseScore\ v1.442.sf2
+
+** STEPS for recompose-simple-scripted-pitches 
+
+*** TODO figure out how to quickly enter new rtms
+
+*** TODO quickly export MIDI version (to Audio_Uploads)
+of score and convert to audio via timidity in bash
+ex. 
+#+BEGIN_SRC bash
+timidity -Ow ~/Google\ Drive/Audio_uploads/wav-file-uploads/odd-gappy-minor-arp.mid -o ~/Google\ Drive/Audio_uploads/wav-file-uploads/odd-gappy-minor-arp.wav
+#+END_SRC
+Can be called from EMACS shell (even in babel bash block?)
