@@ -3,6 +3,9 @@
   :ID:       C0FF2111-0CFE-450F-90D1-430A13B5B203
   :END:
 * canon of basic 4/4 rhythms (whole, half, dotted-half, quarters, eighths)
+  :PROPERTIES:
+  :ID:       61A55E31-3845-4C21-96AA-EEB7923C03CC
+  :END:
 ** ;; whole-note in 4/4
 *** 4
 #+BEGIN_SRC lisp
@@ -94,6 +97,12 @@
 111
 111
 1111
+*** berkowitz melody I-39
+:r1111
+:r555511
+:r55555555
+:r112
+
 * lisp development
 ** defparameter db to nil
 #+BEGIN_SRC lisp
