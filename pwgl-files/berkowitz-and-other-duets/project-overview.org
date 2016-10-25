@@ -39,6 +39,9 @@ lost code for generating pitches???
 #+END_SRC
 
 **** my ENP-VOICE-RTM library functions (imported as PWGL library)
+     :PROPERTIES:
+     :ID:       9FA05B93-BA7A-4DCB-853D-9D7B65366F9C
+     :END:
 
 ENP-VOICE-RTM library
 convert-measures
