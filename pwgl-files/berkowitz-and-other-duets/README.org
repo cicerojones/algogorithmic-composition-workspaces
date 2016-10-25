@@ -42,3 +42,110 @@ ex.
 timidity -Ow ~/Google\ Drive/Audio_uploads/wav-file-uploads/odd-gappy-minor-arp.mid -o ~/Google\ Drive/Audio_uploads/wav-file-uploads/odd-gappy-minor-arp.wav
 #+END_SRC
 Can be called from EMACS shell (even in babel bash block?)
+
+* steps
+** to transcribe a melody from a score
+- connect MIDI controller
+- start up fluid synth
+#+BEGIN_SRC bash
+fluidsynth /Users/b/Library/Audio/Sounds/Banks/GeneralUser\ GS\ MuseScore\ v1.442.sf2
+#+END_SRC
+- open pwgl
+  - set midi out to fluidsynth and then open a patch:
+    - say, plist-db1 to remember how to do this
+
+the rhythm framework for a score will need to be entered by hand. How
+should you best do this?
+
+in emacs, say, type a measure per line as:
+
+111
+15555
+21
+
+(The kind of numbers you can/should type to get a given rhythm depends
+entirely on the "rtm-db" you are using. Understanding this system is
+essential).
+
+Then go back and insert :r before each line (using emacs macros, say)
+
+You can then either create a variable to contain the contents of this
+work, as below:
+
+
+#+BEGIN_SRC lisp
+(setq score '(:r111 :r15555 :r21))
+#+END_SRC
+
+Or, you can simply copy/paste each line into a 'text-box' object
+(which will by default wrap the list in a set of parens when the box
+is processed by the next box).
+
+You will then be relying on two pieces of Lisp code
+
+One will be 'convert-measures', which is loaded as part of a library
+
+[[id:9FA05B93-BA7A-4DCB-853D-9D7B65366F9C][my ENP-VOICE-RTM library functions (imported as PWGL library)]]
+
+But, more immediately, you will need a way to take what you just typed
+and "translate" it into a form that convert-measures can use. This is
+done by some kind of looping and looking up your symbols against a database,
+which you will have to provide, as below. Your *rtm-db* should be
+contained with a "Lisp-code-box" which will need the proper in-package
+statement, and a "defparameter"
+
+
+Here's an example, taken from [[file:plist-db1.pwgl][file:~/Github-repos/algogorithmic-composition-workspaces/pwgl-files/berkowitz-and-other-duets/plist-db1.pwgl]]
+
+#+BEGIN_SRC lisp
+(loop for tag in score-ref collect (getf cl-user::*rtm-db1* tag))
+#+END_SRC
+
+experiment using a dedicated "empty text-box" in whatever pwgl patch
+you switch to
+
+To start editing the pitches of this rhythmic framework
+
+- make sure the MIDI-IN is set to your correct controller
+- open the ENP-score
+- select 'start MIDI input' (Cmd-K) from the "Score" menubar
+- click on a note stem and starting "sight-reading" the melody
+- right click on the resulting "score" to edit various parameters
+  - Tempo
+- export (as MIDI, XML?) from the File menu
+- convert to wav via command line?
+  - use timidity
+#+BEGIN_SRC bash
+timidity -Ow ~/Google\ Drive/Audio_uploads/wav-file-uploads/odd-gappy-minor-arp.mid -o ~/Google\ Drive/Audio_uploads/wav-file-uploads/odd-gappy-minor-arp.wav
+#+END_SRC
+- make sure you save to a desirable directory and convert into a
+  desirable directory
+  - open Google Drive in the background ensure 'cloud' syncing
+
+* developing a library of shortcut notations
+[2016-10-24 Mon]
+for now, see [[id:61A55E31-3845-4C21-96AA-EEB7923C03CC][canon of basic 4/4 rhythms (whole, half, dotted-half, quarters, eighths)]]
+
+** issues to deal with 
+
+- pick-up measures
+- rests
+- dotted notes
+- regex looping would be better than relying on kmacros?
+- consider editing a pwgl "in-place" in emacs, via text?
+- stemming and connecting eighths/sixteenths
+- not forgetting the original pwgl "ENP" score-format details
+  - when it comes to doing multiple parts/lines/chords
+- clefs
+- key signatures and accidentials
+  - part of the Preferences?
+    - Tools:Preference Settings
+    - Settings:Document Preferences
+      - Alterations
+	- Alterations Mapping (flats)
+    - Settings:ENP Application Preferences
+- metronome settings
+- layout, measures/systems per page
+
+
+
