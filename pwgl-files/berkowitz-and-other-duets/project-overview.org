@@ -43,8 +43,10 @@ lost code for generating pitches???
      :ID:       9FA05B93-BA7A-4DCB-853D-9D7B65366F9C
      :END:
 
-ENP-VOICE-RTM library
-convert-measures
+***** ENP-VOICE-RTM library; convert-measures
+:PROPERTIES:
+:ID:       995AEADF-6765-44D4-BE56-246FAF74CB4F
+:END:
 
 #+BEGIN_SRC lisp
 (in-package :ENP-VOICE-RTM)
@@ -60,8 +62,22 @@ convert-measures
 (defun convert-measures (measures) (mapcar #'convert-beats measures))
 
 #+END_SRC
+
+***** sample loop to search through *rtm-db1* for rtms corresponding to "tags"
+:PROPERTIES:
+:ID:       E7B09E73-A58F-4025-B05D-562984779F49
+:END:
 #+BEGIN_SRC lisp
 (loop for tag in score-ref collect (getf cl-user::*rtm-db1* tag))
+#+END_SRC
+
+***** example two-measure "score" of one voice
+:PROPERTIES:
+:ID:       CC7F6DB2-9723-4D60-BE66-CC1EFA843303
+:END:
+#+BEGIN_SRC lisp
+((1 (1 1)) (2 (1)) (1 (1 1)))
+((1 (1 1 1)) (2 (1)) (1 (1 1)))
 #+END_SRC
 **** available rtms in this file
 
