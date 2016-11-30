@@ -120,6 +120,7 @@ concerns," which include:
 2. determining the pitches of some input rhythm via CSP
 3. understanding how enp-script rules work
 4. eventually being able to work with multi-voice scores
+5. dealing with quirks and nuances of score output
 
 
 * Common Lisp and PWGL work toward algorithmic composition

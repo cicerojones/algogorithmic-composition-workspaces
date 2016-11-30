@@ -146,7 +146,252 @@
 ((2 (6 1 1)))
 
 #+END_SRC
+** ;; quarter, eighth, 3/8 (compare with half, quarter in 4/4)
+#+BEGIN_SRC lisp
+((2 (1)) (1 (1))) ;; 
+((2 (1)) (1 (1)) :time-signature (3 8))
+#+END_SRC
+** ;; quarter, dotted eighth, sixteenth in 4/8
+#+BEGIN_SRC lisp
+(:begin :measure
+ (2 (1)) (2 (3 1)) :time-signature (4 8))
+#+END_SRC
+* complicated ENP examples
+** original with canvas elements
+#+BEGIN_SRC lisp
 
+(((((2
+     ((1
+       :notes
+       (65)
+       :expressions
+       ((:canvas-expression
+         :elements
+         ((:arrow
+           :color
+           :green
+           :vertices
+           ((:x 3.9999988 :y 1.2499999) (:x 8.800003 :y 1.25))
+           :pattern
+           26
+           :line-width
+           2.0)
+          (:filled-circle :color :cyan :x 4.25 :y -0.6000008)
+          (:circle
+           :color
+           :mediumvioletred
+           :pattern
+           22
+           :line-width
+           1.5
+           :x
+           1.0000001
+           :y
+           -0.6500002)
+          (:lineloop
+           :color
+           :deeppink
+           :vertices
+           ((:x 0.15 :y 0.9500001)
+            (:x 1.1499999 :y 0.9500001)
+            (:x 1.1499999 :y 1.9499995)
+            (:x 0.15 :y 1.9499995))
+           :pattern
+           35
+           :line-width
+           0.6)
+          (:polygon
+           :color
+           :darkturquoise
+           :vertices
+           ((:x 1.7500001 :y 0.95000017)
+            (:x 2.7500003 :y 0.95000017)
+            (:x 2.7500003 :y 1.9499993)
+            (:x 1.7500001 :y 1.9499993)))
+          (:linestrip
+           :color
+           :maroon
+           :vertices
+           ((:x 6.45 :y -1.15)
+            (:x 6.950001 :y -0.19999993)
+            (:x 7.4500003 :y -0.65000004)
+            (:x 7.95 :y 0.35))
+           :pattern
+           44
+           :line-width
+           0.4)
+          (:line
+           :color
+           :mediumvioletred
+           :vertices
+           ((:x 8.600001 :y -0.59999997) (:x 9.6 :y -0.59999997))
+           :pattern
+           11
+           :line-width
+           5.0)
+          (:text
+           :color
+           :blue
+           :font-scaler
+           0.62000037
+           :x
+           7.000001
+           :y
+           2.6999994
+           :text
+           "abcd")
+          (:text
+           :color
+           :goldenrod
+           :font-scaler
+           1.3499997
+           :x
+           -0.1
+           :y
+           2.7499998
+           :text
+           "whqe"
+           :font
+           :musical-symbols)))))))
+    :time-signature
+    (2 8)
+    :metronome
+    (4 60)))
+  :instrument
+  nil
+  :staff
+  :treble-staff))
+#+END_SRC
+** add expression keywords at score, part, voice, and measure level
+#+BEGIN_SRC lisp
+(((((1 ((1 :notes ((72 :vel 100)))))
+   (1 ((1 :notes (72) :expressions (:staccato))
+       (1 :notes (74) :expressions (:staccato))
+       (1 :notes (76) :expressions (:staccato))
+       (1 :notes (77) :expressions (:staccato))
+       (1 :notes (78) :expressions (:staccato))) :class :grace-beat)
+   (3 ((1 :notes (79) :expressions (:trillo))))
+:metronome-value 120)
+:instrument :Clarinet)
+:staff :alto-staff) 
+:key-signature :a-flat-major)
+#+END_SRC
+** 
+#+BEGIN_SRC lisp
+
+  (:begin :score
+
+   (:begin :part
+
+    (:begin :voice
+
+     (:begin :measure
+
+      (2
+       ((1
+         :notes
+         (65)
+         :expressions
+         ((:canvas-expression
+           :elements
+           ((:arrow
+             :color
+             :green
+             :vertices
+             ((:x 3.9999988 :y 1.2499999) (:x 8.800003 :y 1.25))
+             :pattern
+             26
+             :line-width
+             2.0)
+            (:filled-circle :color :cyan :x 4.25 :y -0.6000008)
+            (:circle
+             :color
+             :mediumvioletred
+             :pattern
+             22
+             :line-width
+             1.5
+             :x
+             1.0000001
+             :y
+             -0.6500002)
+            (:lineloop
+             :color
+             :deeppink
+             :vertices
+             ((:x 0.15 :y 0.9500001)
+              (:x 1.1499999 :y 0.9500001)
+              (:x 1.1499999 :y 1.9499995)
+              (:x 0.15 :y 1.9499995))
+             :pattern
+             35
+             :line-width
+             0.6)
+            (:polygon
+             :color
+             :darkturquoise
+             :vertices
+             ((:x 1.7500001 :y 0.95000017)
+              (:x 2.7500003 :y 0.95000017)
+              (:x 2.7500003 :y 1.9499993)
+              (:x 1.7500001 :y 1.9499993)))
+            (:linestrip
+             :color
+             :maroon
+             :vertices
+             ((:x 6.45 :y -1.15)
+              (:x 6.950001 :y -0.19999993)
+              (:x 7.4500003 :y -0.65000004)
+              (:x 7.95 :y 0.35))
+             :pattern
+             44
+             :line-width
+             0.4)
+            (:line
+             :color
+             :mediumvioletred
+             :vertices
+             ((:x 8.600001 :y -0.59999997) (:x 9.6 :y -0.59999997))
+             :pattern
+             11
+             :line-width
+             5.0)
+            (:text
+             :color
+             :blue
+             :font-scaler
+             0.62000037
+             :x
+             7.000001
+             :y
+             2.6999994
+             :text
+             "abcd")
+            (:text
+             :color
+             :goldenrod
+             :font-scaler
+             1.3499997
+             :x
+             -0.1
+             :y
+             2.7499998
+             :text
+             "whqe"
+             :font
+             :musical-symbols)))))))
+      :time-signature
+      (2 8)
+      :metronome
+      (4 60)))
+    :instrument
+    nil
+    :staff
+    :treble-staff))
+#+END_SRC
+#+BEGIN_SRC lisp
+
+#+END_SRC
 * practice
 ** quick entry looking at a score
 *** 
