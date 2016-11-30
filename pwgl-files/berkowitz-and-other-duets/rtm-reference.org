@@ -79,6 +79,74 @@
 ;; two quarters, four eighths in 4/4
 ((2 (1 1)) (2 (1 1 1 1)))
 #+END_SRC
+** ;; dotted half tied to eighth, two sixteenths in 4/4
+*** 35066
+#+BEGIN_SRC lisp
+((3 (1)) (1 (2.0 1 1)))
+
+#+END_SRC
+** ;; dotted half, two eighths in 4/4
+#+BEGIN_SRC lisp
+((4 (6 1 1)))
+
+#+END_SRC
+** ;; whole rest, 4/4
+** ;; dotted quarter, two sixteenths, quarter, quarter rest in 4/4
+#+BEGIN_SRC lisp
+((2 (6 1 1)) (2 (1 -1)))
+#+END_SRC
+* non-4/4 rhythms
+** ;; one half, one quarter in 3/4
+#+BEGIN_SRC lisp
+((2 (1)) (1 (1)))
+#+END_SRC
+** ;; tied over quarter, quarter in 2/4
+#+BEGIN_SRC lisp
+((1 (1.0)) (1 (1)))
+#+END_SRC
+** ;; dotted quarter, eighth in 2/4
+#+BEGIN_SRC lisp
+((2 (3 1)))
+#+END_SRC
+** ;; two eighths, one quarter in 2/4
+#+BEGIN_SRC lisp
+((1 (1 1)) (1 (1)))
+#+END_SRC
+** ;; two eighths, two quarters in 3/4
+#+BEGIN_SRC lisp
+((1 (1 1)) (1 (1)) (1 (1)))
+#+END_SRC
+** ;; single half in 2/4
+#+BEGIN_SRC lisp
+((2 (1)))
+#+END_SRC
+** ;; one quarter tied to one quarter in 2/4
+#+BEGIN_SRC lisp
+((1 (1)) (1 (1.0)))
+#+END_SRC
+** ;; one quarter tied to one eighth, one eighth in 2/4
+#+BEGIN_SRC lisp
+((1 (1)) (1 (1.0 1)))
+#+END_SRC
+** ;; tied quarter to eighth, two sixteenths in 2/4
+#+BEGIN_SRC lisp
+((1 (1)) (1 (2.0 1 1)))
+#+END_SRC
+** ;; quarter, two eighths, two eighths, in 3/4
+#+BEGIN_SRC lisp
+((1 (1)) (1 (1 1)) (1 (1 1)))
+
+#+END_SRC
+** ;; dotted eighth, sixteenth in 1/4
+#+BEGIN_SRC lisp
+((1 (3 1)))
+#+END_SRC
+** ;; dotted eighth, two sixteenths in 2/4
+#+BEGIN_SRC lisp
+((2 (6 1 1)))
+
+#+END_SRC
+
 * practice
 ** quick entry looking at a score
 *** 
