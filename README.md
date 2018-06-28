@@ -7,7 +7,7 @@ A directory for storing Lisp code for algorithmic composition.
 
 There is perhaps an unhealthy proliferation of "READMEs." Nonetheless, org-mode files remain the preferred way to create documentation using markup formatting.
 
-See the README.org--alongside this README.md--in this top-level directory.
+See the [README.org](algogorithmic-composition-workspaces/README.org)--alongside this README.md--in this top-level directory.
 ## Files
 
 my-algomusic-utilities.lisp
