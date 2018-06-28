@@ -2,3 +2,6 @@
 what kind of projects and files are here?
 
 What are you doing my friend?
+
+[[file:pwgl-files/README.org][file:~/repos/algogorithmic-composition-workspaces/pwgl-files/README.org]]
+[[file:pwgl-files/berkowitz-and-other-duets/README.org][file:~/repos/algogorithmic-composition-workspaces/pwgl-files/berkowitz-and-other-duets/README.org]]
