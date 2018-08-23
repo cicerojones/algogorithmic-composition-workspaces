@@ -1,4 +1,17 @@
+* Using PWGL and ENP
+Not enough has been said about the importance of grappling with /music representation/, or rather, how ENP approaches this topic.
+
+What this means in practice for anyone who endeavors to take advantage of all this Lisp-based system offers is that each layer of the superstructure of an ENP score must be familiar and friendly if you are to get anywhere!
+
+So, to start with, do you have a good mental model of "the stack" and how it is assembled (and how to parse it when it is assembled as text)?
+
+note -- chord -- beat -- measure -- voice -- part -- score
+
+What *is* each one of those in your mind?
 * STEPS to transcribe a melody from a score
+  :PROPERTIES:
+  :ID:       D3EAAF33-EC29-43DA-A1A4-3A1EF1C25A3C
+  :END:
 ** setup
 - connect MIDI controller
 - start up fluid synth
