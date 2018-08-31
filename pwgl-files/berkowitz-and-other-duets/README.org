@@ -1,4 +1,23 @@
-* Using PWGL and ENP
+* STEPS to understanding the "Berkowitz Project"
+Initially, more than one thing was being advanced here:
+- inputing rhythms quickly, so as to set the pitches of a single line
+  piece most quickly using a MIDI controller
+  - see: SIMPLE-TEMPLATE-FOR-TRANSCRIBING-RHYTHMS.pwgl
+- doing actual algo composition using CSP via enp-script and a chord-editor
+  - see: RECOMPOSE-SIMPLE-SCRIPTED-PITCHES.pwgl
+
+But a proper re-organization is in order, achieving a "separation of
+concerns," which include:
+
+1. quick entry of scores
+2. determining the pitches of some input rhythm via CSP
+3. understanding how enp-script rules work
+4. eventually being able to work with multi-voice scores
+5. dealing with quirks and nuances of score output
+
+
+* Using PWGL and ENP regularly
+** music representation
 Not enough has been said about the importance of grappling with /music representation/, or rather, how ENP approaches this topic.
 
 What this means in practice for anyone who endeavors to take advantage of all this Lisp-based system offers is that each layer of the superstructure of an ENP score must be familiar and friendly if you are to get anywhere!
@@ -8,17 +27,39 @@ So, to start with, do you have a good mental model of "the stack" and how it is 
 note -- chord -- beat -- measure -- voice -- part -- score
 
 What *is* each one of those in your mind?
+** need for personal tutorial system
+When opening the PWGL Tutorial, you will be dropped into the "PWGL browser." 
+
+But little did you realize the virtues of this!
+
+Once in the broswer you can choose to set any folder of PWGL patches to be ready for use as a "tutorial" style experience.
+
+One main advantage of this is that you can navigate quickly among related files, perhaps in a way that makes for a more helpful learning experience.
+
+But another advantage is that you can, when editing a patch that you are using or will be using for the "tutorial" experience, you can also create "documentation" that will appear in the side window in when you're in this "tutorial mode."
+
+The only disadvantage is that edits made to the patch this way will NOT be saved.
+** achieving a rapproachment between text and GUI
+The facts are:
+
+musical or sonic events allow more than one way to be experienced, understood or analyzed. So what do you as musician attempting to incorporate the computer into his work?
+
+How do you balance conventional music notation, alphanumeric approximations of or instructions for sound-making, and the actual experience of hearing and executing or controlling in real time music?
+
+For the sake of Lisp-based music environments, the answer is not obvious, but clearly there are advantages, whenever computer code is involved, to having skills with a primarily text-based medium. So what do you with Emacs, Common Lisp code as found in PWGL, and the various GUI visualizations that PWGL makes available for organizing your work and thinking?
+
+
 * STEPS to transcribe a melody from a score
   :PROPERTIES:
   :ID:       D3EAAF33-EC29-43DA-A1A4-3A1EF1C25A3C
   :END:
-** setup
+** setup for soundfonts with fluidsynth 
 - connect MIDI controller
 - start up fluid synth
 #+BEGIN_SRC bash
 fluidsynth /Users/b/Library/Audio/Sounds/Banks/GeneralUser\ GS\ MuseScore\ v1.442.sf2
 #+END_SRC
-** use PWGL
+** [#A] use PWGL
  - set midi out to fluidsynth (make sure MIDI in is correct)
  - open an old patch or create a new one
    - say, plist-db1
@@ -34,7 +75,7 @@ fluidsynth /Users/b/Library/Audio/Sounds/Banks/GeneralUser\ GS\ MuseScore\ v1.44
              double-click to bring up the "object search" interface
              - set Package to "enp-voice-rtm" and search for "convert-measures"
                - failure to set the package will produce no search results
-           - convert-measures expects a certain structure to passed
+           - convert-measures expects a certain structure to be passed
              - see code at [[id:995AEADF-6765-44D4-BE56-246FAF74CB4F][ENP-VOICE-RTM library; convert-measures]]
              - if you pass a plain-text box, you can fill it with the
                following: [[id:CC7F6DB2-9723-4D60-BE66-CC1EFA843303][example two-measure "score" of one voice]]
@@ -44,14 +85,8 @@ fluidsynth /Users/b/Library/Audio/Sounds/Banks/GeneralUser\ GS\ MuseScore\ v1.44
                - how do you get the rtm database loaded? automatically?
              - create series of numerical inputs on succesive new
                lines in emacs and add leading colons per measure
-           
-
-
-
-
 ** transcribe a rhythmic framework
-the rhythm framework for a score will need to be entered by hand. How
-should you best do this?
+the rhythm framework for a score will need to be entered by hand. How should you best do this?
 
 in emacs, say, type a measure per line as:
 
@@ -59,23 +94,18 @@ in emacs, say, type a measure per line as:
 15555
 21
 
-(The kind of numbers you can/should type to get a given rhythm depends
-entirely on the "rtm-db" you are using. Understanding this system is
-essential).
+(The kind of numbers you can/should type to get a given rhythm depends entirely on the "rtm-db" you are using. Understanding this system is essential).
 
 Then go back and insert :r before each line (using emacs macros, say)
 
-You can then either create a variable to contain the contents of this
-work, as below:
+You can then either create a variable to contain the contents of this work, as below:
 
 
 #+BEGIN_SRC lisp
 (setq score '(:r111 :r15555 :r21))
 #+END_SRC
 
-Or, you can simply copy/paste each line into a 'text-box' object
-(which will by default wrap the list in a set of parens when the box
-is processed by the next box).
+Or, you can simply copy/paste each line into a 'text-box' object (which will by default wrap the list in a set of parens when the box is processed by the next box).
 
 ** import "list of keyword" symbols into PWGL somehow
 You will then be relying on two pieces of Lisp code
@@ -118,24 +148,6 @@ timidity -Ow ~/Google\ Drive/Audio_uploads/wav-file-uploads/odd-gappy-minor-arp.
 - make sure you save to a desirable directory and convert into a
   desirable directory
   - open Google Drive in the background ensure 'cloud' syncing
-* STEPS to understanding the "Berkowitz Project"
-Initially, more than one thing was being advanced here:
-- inputing rhythms quickly, so as to set the pitches of a single line
-  piece most quickly using a MIDI controller
-  - see: SIMPLE-TEMPLATE-FOR-TRANSCRIBING-RHYTHMS.pwgl
-- doing actual algo composition using CSP via enp-script and a chord-editor
-  - see: RECOMPOSE-SIMPLE-SCRIPTED-PITCHES.pwgl
-
-But a proper re-organization is in order, achieving a "separation of
-concerns," which include:
-
-1. quick entry of scores
-2. determining the pitches of some input rhythm via CSP
-3. understanding how enp-script rules work
-4. eventually being able to work with multi-voice scores
-5. dealing with quirks and nuances of score output
-
-
 * Common Lisp and PWGL work toward algorithmic composition
   :PROPERTIES:
   :ID:       EE7143F7-E35C-4141-921B-4E271CC8A7E3
