@@ -1,3 +1,5 @@
+;; Should this be set and loaded here as some kind of variable?
+
 (
  ;; single quarter note in 1/4
  ((1 (1)))				

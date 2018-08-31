@@ -276,7 +276,7 @@
 :staff :alto-staff) 
 :key-signature :a-flat-major)
 #+END_SRC
-** 
+** canvas expressions
 #+BEGIN_SRC lisp
 
   (:begin :score
@@ -516,11 +516,12 @@
 | 1 | (1) |
 
 * rtm databases
-** small and simple rtm databases
+** small and simple rtm 4/4 databases
 #+BEGIN_SRC lisp
 (defparameter *small-rtmdb* '(:R1-1-6666 ((1 (1)) (1 (-1)) (1 (1 1 1 1))) :R555555 ((1 (1 1)) (1 (1 1)) (1 (1 1))) :R21 ((2 (1)) (1 (1))) :R1111 ((1 (1)) (1 (1)) (1 (1)) (1 (1))) :R15555 ((1 (1)) (1 (1 1)) (1 (1 1))) :R111 ((1 (1)) (1 (1)) (1 (1)))))
 #+END_SRC
 
+formatted for easier reading
 #+BEGIN_SRC lisp
   (defparameter *small-rtmdb*
     '(:R1-1-6666 ((1 (1)) (1 (-1)) (1 (1 1 1 1)))
