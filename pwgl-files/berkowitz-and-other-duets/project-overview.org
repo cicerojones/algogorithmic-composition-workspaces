@@ -166,3 +166,34 @@ first use of library function--no pitch information
 
 
 #+END_SRC
+* basic ENP concepts
+** use the ENP->REFERENCE->FOREWORD-QUICKSTART!
+
+Use a single "a" in order to add notes!
+
+Use a single "," in order to change to "flat" (vs. "sharp") version of an alteration!
+** SCORE: one measure, one part, one voice
+#+begin_src lisp
+(((((1 ((1 :notes (60)))) (1 ((1 :start-time 0.5 :notes (60)))) (1 ((1 :start-time 1.0 :notes (60)))) (1 ((1 :start-time 1.5 :notes (60)))) :time-signature (4 4) :metronome (4 120))) :instrument nil :staff :treble-staff))
+#+end_src
+
+#+begin_src lisp
+  (;; begin score
+   (;; begin part
+    (;; begin voice
+     (;; begin "measure--list of notes"
+      (1 ((1 :notes (60))))
+      (1 ((1 :start-time 0.5 :notes (60))))
+      (1 ((1 :start-time 1.0 :notes (60))))
+      (1 ((1 :start-time 1.5 :notes (60))))
+      :time-signature (4 4)
+      :metronome (4 120)
+      ;; end "measure--list of notes""
+      )
+      ;; end voice
+      )
+      ;; end part
+    :instrument nil :staff :treble-staff)
+    ;; end score
+)
+#+end_src
