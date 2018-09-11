@@ -1,4 +1,6 @@
 * STEPS to understanding the "Berkowitz Project"
+
+** motivation and planning
 Initially, more than one thing was being advanced here:
 - inputing rhythms quickly, so as to set the pitches of a single line
   piece most quickly using a MIDI controller
@@ -15,6 +17,31 @@ concerns," which include:
 4. eventually being able to work with multi-voice scores
 5. dealing with quirks and nuances of score output
 
+
+** attempting to use
+First of all, DON'T forget to actually provide a library using PWGL's machinery--IF YOU ARE ACTUALLY LOADING THAT LIBRARY SOMEWHERE IN YOUR PATCH!
+
+With that out of the way...
+
+The basic process is to conceive of some existing (or new!) score's rhythmic framework as being a series of number strings such as below:
+
+4
+22
+
+This will, through the power of text-editing be converted into
+:r4 
+
+:r22 
+
+Then, through a process of database lookup, each of this "key" will be replaced by some corresponding "value," such as:
+
+:r4 => ((4 (1)))
+
+:r22 => ((2 (1)) (2 (1)))
+
+These "rhythmic framework" notations then must be converted into one or more "beat" objects that will be consumed by "measure" objects.
+
+At the last, you will hopefully be able to populate those rhythmic events with actual notes!
 
 * Using PWGL and ENP regularly
 ** music representation
@@ -148,6 +175,8 @@ timidity -Ow ~/Google\ Drive/Audio_uploads/wav-file-uploads/odd-gappy-minor-arp.
 - make sure you save to a desirable directory and convert into a
   desirable directory
   - open Google Drive in the background ensure 'cloud' syncing
+
+
 * Common Lisp and PWGL work toward algorithmic composition
   :PROPERTIES:
   :ID:       EE7143F7-E35C-4141-921B-4E271CC8A7E3
@@ -190,6 +219,8 @@ ex.
 timidity -Ow ~/Google\ Drive/Audio_uploads/wav-file-uploads/odd-gappy-minor-arp.mid -o ~/Google\ Drive/Audio_uploads/wav-file-uploads/odd-gappy-minor-arp.wav
 #+END_SRC
 Can be called from EMACS shell (even in babel bash block?)
+
+
 * developing a library of shortcut notations
 [2016-10-24 Mon]
 for now, see [[id:61A55E31-3845-4C21-96AA-EEB7923C03CC][canon of basic 4/4 rhythms (whole, half, dotted-half, quarters, eighths)]]
